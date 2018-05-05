@@ -1,0 +1,89 @@
+<style type="text/css">
+
+  /* Dropdown-submenu is styles for dropdown with sub menu style is needed*/
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+  }
+
+  .dropdown-menu.profile li { 
+    border-bottom: 1px solid #efefef;
+    padding: 6px;
+  }
+
+  .dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+
+  .dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+  }
+
+  .dropdown-submenu.pull-left {
+    float: none;
+  }
+
+  .dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+  }
+
+  .nav-link:hover {
+    border-bottom: 1px dotted #a55757;
+  }
+</style>
+
+<nav class="topbar topbar-inverse topbar-expand-sm topbar-sticky">
+  <div class="container">
+    <div class="row h-full" style="width: 100%;">
+      <div class="col-10 col-md-4 align-self-center">
+        <button class="topbar-toggler" aria-label="Toggle navigation">
+        &#9776;
+        </button>
+        <!-- <a class="navbar-brand" href="/"><img src="/public/images/logo-web.png"  #78db88;></a> -->
+        <a class="topbar-brand" href="/">
+          <img class="logo-default p-10" src="/public/images/logo-ex-6.png" alt="logo">
+        </a>
+      </div>
+
+      <!-- NAVBAR ITEMS FOR MEDIUM SCREEN SIZE DEVICE -->
+      <div class="col-1 col-md-8 text-md-right">
+        <ul class="topbar-nav topbar-nav__main nav pt-30">
+          <li class="nav-item"><a class="nav-link" href="#" data-scrollto="home">HOME <!-- HOME --></a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-scrollto="section-content">ABOUT</a></li> 
+          <li class="nav-item"><a class="nav-link" href="#" data-scrollto="section-services"> SERVICES </a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-scrollto="section"> APPOINTMENTS </a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-scrollto="section-contactus">CONTACT</a></li> 
+        </ul>
+      </div>
+      <!-- // END OF NAVBAR ITEMS FOR MEDIUM SCREEN SIZE DEVICE -->
+
+    </div>
+  </div>
+</nav>

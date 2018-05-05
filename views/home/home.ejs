@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title><%= locals.title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Company Web Solutions">
+    <meta name="keywords" content="Company Web Solutions">
+    <link href="/public/css/core.min.css" rel="stylesheet">
+    <link href="/public/css/thesaas.min.css" rel="stylesheet">
+    <link href="/public/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid" style="padding:0px;">
+	<!-- THIS IS THE BANNER -->
+	<%- include("templates/header.ejs") %>
+	<!-- END BANNER -->
+
+	<!-- THIS IS THE NAVBAR -->
+	<%- include("../templates/navbar.ejs") %>
+
+    <!-- THIS IS THE ABOUT US SECTION -->
+	<%- include("templates/about-us.ejs") %>
+    <!-- // END OF ABOUT US SECTION -->
+
+    <section class="section section-inverse cta-register" style="background-image: url(public/images/services-banner.jpg)" data-overlay="6">
+        <div class="container">
+            <div class="col-12 col-md-12 text-center">
+                <h4 class="mb-0 text-warning">SERVICES WE OFFERS</h4><br>
+                <a class="btn" style="background-color: white; color: #a55757;" href="#" data-scrollto="section-contactus">
+                Contact Us
+                </a>
+                <a class="btn" style="background-color: white; color: #a55757;" href="#" data-scrollto="section-services">
+                Check Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- THIS IS THE ABOUT US SECTION -->
+    <%- include("templates/services.ejs") %>
+    <!-- // END OF ABOUT US SECTION -->
+
+    <section class="section section-inverse cta-register" style="background-image: url(public/images/book-now.jpg)" data-overlay="6">
+        <div class="container">
+            <div class="col-12 col-md-12 text-center">
+                <h4 class="mb-0 text-warning">DO YOU WANT TO SCHEDULE APPOINTMENT?</h4><br>
+                <a class="btn" style="background-color: white; color: #a55757;" href="#" data-scrollto="section-contactus">
+                Contact Us
+                </a>
+                <a class="btn" style="background-color: white; color: #a55757;" href="#" data-scrollto="section-contactus">
+                Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- THIS IS THE CONTACT US SECTION -->
+    <%- include("templates/contact-us.ejs") %>
+    <!-- // END OF THE CONTACT US SECTION -->
+</div>
+<%- include("../templates/footer.ejs") %>
+<script src="/public/javascript/core.min.js"></script>
+<script src="/public/javascript/thesaas.min.js"></script>
+</body>
+</html>
