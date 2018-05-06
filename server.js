@@ -15,6 +15,10 @@ const helmet         = require('helmet');
 const dotEnv         = require('dotenv').config();
 const favicon        = require('serve-favicon');
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Set database connection
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const databaseConfig = require('./config/mongo-db-context');
 const initializeEnv = require('./config/initialize-env-variables');
 const env           = process.env.NODE_EN || 'dev';
 initializeEnv.pickEnv(env, app);
@@ -49,6 +53,8 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 // Get the bootstrap, jquery, and font-awesome inside the node_module 
 app.use('/js'     , express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js'     , express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/js'     , express.static(__dirname + '/node_modules/jquery-datetimepicker'));
+app.use('/css'    , express.static(__dirname + '/node_modules/jquery-datetimepicker'))
 app.use('/css'    , express.static(__dirname + '/node_modules/bootstrap/dist/css')); 
 app.use('/fonts/' , express.static(__dirname + '/node_modules/bootstrap/dist/fonts'));
 app.use('/fonts/' , express.static(__dirname + '/node_modules/font-awesome/fonts'));

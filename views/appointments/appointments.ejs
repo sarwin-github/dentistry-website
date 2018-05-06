@@ -1,0 +1,290 @@
+ 
+<!doctype html>
+<html>
+<head>
+  <title>Create Client</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Company Web Solutions">
+  <meta name="keywords" content="Company Web Solutions">
+  <link href="/public/css/core.min.css" rel="stylesheet">
+  <link href="/public/css/thesaas.min.css" rel="stylesheet">
+  <link href="/public/css/styles.css" rel="stylesheet">
+  <link href='/public/javascript/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+  <link href='/public/javascript/fullcalendar/fullcalendar.css' rel='stylesheet' />
+  <link href='/css/jquery.datetimepicker.css' rel='stylesheet' />
+  
+</head>
+<body>
+  <div class="container-fluid bg-gray" style="padding:0px;">
+    <!-- THIS IS THE NAVBAR -->
+    <%- include("../templates/navbar.ejs") %>
+
+    <!-- Header -->
+    <header class="header header-inverse" style="background-image: url(/public/images/teen-patient.jpg);">
+      <div class="overlay" style="background-color: #000; position: absolute; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.6;"></div>
+      <div class="container text-center">
+
+        <div class="row">
+          <div class="col-12 col-lg-8 offset-lg-2">
+          	<h2>Client Appointments <!-- Fitness options--> </h2>
+          	<br>
+          	<p class="fs-20 opacity-70">"List of appointment details".</p>
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <!-- END Header -->
+
+    <div class="container py-40">
+      	<div class="row">
+           	<div class="col-md-12 card py-40 px-40">
+           		<div id='calendar'></div>
+           	</div>
+        </div>
+      </div>
+    </div>
+    
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/public/javascript/clientClasses/center-client-classes-calendar-simple.js"></script>
+<script>
+	var dataSource = [{
+    "_id": "5aee8e54f51c58aecf967d7b",
+    "index": 0,
+    "guid": "9983fb93-225a-44c4-ba1a-cbddb24aa870",
+    "isActive": false,
+    "balance": "$2,469.84",
+    "picture": "http://placehold.it/32x32",
+    "age": 39,
+    "eyeColor": "green",
+    "name": "Carney England",
+    "gender": "male",
+    "company": "DOGSPA",
+    "email": "carneyengland@dogspa.com",
+    "phone": "+1 (927) 401-3999",
+    "address": "898 Provost Street, Hemlock, Iowa, 2455",
+    "about": "Eiusmod cillum qui et consectetur mollit aliquip. Pariatur officia laborum ex anim ea commodo. Sunt est tempor consectetur ipsum ut aliquip voluptate duis ut adipisicing commodo anim. Id quis consequat fugiat veniam pariatur est consequat aliquip labore. Reprehenderit ad ad et aliquip ut tempor anim amet non nulla nulla excepteur id.\r\n",
+    "registered": "2014-11-26T06:09:25 -08:00",
+    "latitude": 71.721935,
+    "longitude": -91.56621,
+    "tags": [
+      "pariatur",
+      "consequat",
+      "aute",
+      "nisi",
+      "labore",
+      "incididunt",
+      "incididunt"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Sexton Watkins"
+      },
+      {
+        "id": 1,
+        "name": "Solis Davidson"
+      },
+      {
+        "id": 2,
+        "name": "Raymond Payne"
+      }
+    ],
+    "greeting": "Hello, Carney England! You have 8 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "5aee8e546034883195033785",
+    "index": 1,
+    "guid": "2336f3c3-ffe2-4d29-b81e-c528dbd1413d",
+    "isActive": false,
+    "balance": "$2,569.52",
+    "picture": "http://placehold.it/32x32",
+    "age": 39,
+    "eyeColor": "green",
+    "name": "Finley Powell",
+    "gender": "male",
+    "company": "COMVERGES",
+    "email": "finleypowell@comverges.com",
+    "phone": "+1 (827) 536-2429",
+    "address": "120 Holt Court, Alamo, Marshall Islands, 1847",
+    "about": "Ut eu laborum ea irure Lorem eu nulla elit est dolor quis nulla. Proident nostrud cupidatat ut anim reprehenderit dolore ut anim. Culpa enim qui laboris nostrud mollit magna sunt elit ut velit pariatur quis id. Cupidatat eiusmod veniam excepteur mollit id ex proident proident sit aliquip aute est Lorem nostrud. Duis labore velit Lorem excepteur Lorem deserunt consectetur.\r\n",
+    "registered": "2014-11-26T10:17:28 -08:00",
+    "latitude": 75.305908,
+    "longitude": 23.271024,
+    "tags": [
+      "eiusmod",
+      "sit",
+      "duis",
+      "do",
+      "ea",
+      "sit",
+      "eiusmod"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Violet Cunningham"
+      },
+      {
+        "id": 1,
+        "name": "Rodriguez Cabrera"
+      },
+      {
+        "id": 2,
+        "name": "Steele Pate"
+      }
+    ],
+    "greeting": "Hello, Finley Powell! You have 9 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "5aee8e54d1b43a4df4246591",
+    "index": 2,
+    "guid": "1aeed276-298f-423d-a01e-b33caf503d53",
+    "isActive": true,
+    "balance": "$1,933.50",
+    "picture": "http://placehold.it/32x32",
+    "age": 40,
+    "eyeColor": "blue",
+    "name": "Vazquez Baldwin",
+    "gender": "male",
+    "company": "CYTREX",
+    "email": "vazquezbaldwin@cytrex.com",
+    "phone": "+1 (840) 473-2873",
+    "address": "605 Stratford Road, Deputy, Oregon, 428",
+    "about": "Est laboris laborum eu tempor Lorem deserunt exercitation cillum culpa aute. Sint nulla quis nulla velit reprehenderit. Voluptate consequat fugiat quis officia.\r\n",
+    "registered": "2016-01-31T10:53:11 -08:00",
+    "latitude": -56.102898,
+    "longitude": -153.9341,
+    "tags": [
+      "incididunt",
+      "est",
+      "eu",
+      "ut",
+      "quis",
+      "aliquip",
+      "velit"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Spence Franks"
+      },
+      {
+        "id": 1,
+        "name": "Williamson Patton"
+      },
+      {
+        "id": 2,
+        "name": "Elvira Bryan"
+      }
+    ],
+    "greeting": "Hello, Vazquez Baldwin! You have 8 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "5aee8e54613cbcc2c6c727f2",
+    "index": 3,
+    "guid": "eee31960-3bdb-430e-a5f1-952bda96cce9",
+    "isActive": true,
+    "balance": "$1,481.11",
+    "picture": "http://placehold.it/32x32",
+    "age": 34,
+    "eyeColor": "brown",
+    "name": "Shana Dale",
+    "gender": "female",
+    "company": "KIGGLE",
+    "email": "shanadale@kiggle.com",
+    "phone": "+1 (986) 495-3131",
+    "address": "531 Boerum Place, Naomi, Guam, 7813",
+    "about": "Velit cupidatat consectetur aute ad velit ad deserunt adipisicing duis officia. Velit pariatur cillum nulla laborum sunt culpa excepteur ex elit nisi dolore sit. Anim elit laboris labore dolore aute laborum fugiat. Sint do cillum eu irure eiusmod consequat aliquip irure proident labore sunt adipisicing. Consectetur voluptate nulla do adipisicing.\r\n",
+    "registered": "2014-07-20T12:52:12 -08:00",
+    "latitude": -26.076378,
+    "longitude": 13.659318,
+    "tags": [
+      "culpa",
+      "pariatur",
+      "eiusmod",
+      "proident",
+      "commodo",
+      "excepteur",
+      "nostrud"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Noble Castillo"
+      },
+      {
+        "id": 1,
+        "name": "Dorothy Hansen"
+      },
+      {
+        "id": 2,
+        "name": "Serena Howe"
+      }
+    ],
+    "greeting": "Hello, Shana Dale! You have 2 unread messages.",
+    "favoriteFruit": "banana"
+  },
+  {
+    "_id": "5aee8e5471040e4237fa7412",
+    "index": 4,
+    "guid": "1de38bb2-67df-4e67-84ef-9ff72d134809",
+    "isActive": true,
+    "balance": "$2,663.56",
+    "picture": "http://placehold.it/32x32",
+    "age": 36,
+    "eyeColor": "green",
+    "name": "Mckay Hood",
+    "gender": "male",
+    "company": "GENMOM",
+    "email": "mckayhood@genmom.com",
+    "phone": "+1 (950) 479-2064",
+    "address": "332 Powell Street, Munjor, South Carolina, 1130",
+    "about": "Ut elit ipsum Lorem occaecat in fugiat Lorem. Labore culpa eu sit do eiusmod culpa ut nisi minim et qui. Ea sit ipsum labore cupidatat ipsum incididunt duis. Ut incididunt culpa ipsum labore aliqua do ea exercitation.\r\n",
+    "registered": "2018-04-05T07:40:15 -08:00",
+    "latitude": 44.452739,
+    "longitude": 17.182776,
+    "tags": [
+      "reprehenderit",
+      "Lorem",
+      "veniam",
+      "esse",
+      "velit",
+      "laboris",
+      "sint"
+    ],
+    "friends": [
+      {
+        "id": 0,
+        "name": "Sloan Mays"
+      },
+      {
+        "id": 1,
+        "name": "Marshall Wilkinson"
+      },
+      {
+        "id": 2,
+        "name": "Reeves Horne"
+      }
+    ],
+    "greeting": "Hello, Mckay Hood! You have 1 unread messages.",
+    "favoriteFruit": "banana"
+  }
+]
+
+$(document).ready(function(dataSource) {
+  getCalendarData(<%- JSON.stringify() %>);
+});
+</script>
+
+<script src='/public/javascript/fullcalendar/lib/moment.min.js'></script>
+<script src='/public/javascript/fullcalendar/fullcalendar.js'></script>
+<script src="/js/build/jquery.datetimepicker.full.min.js"></script>
+</body>
+</html>
+
