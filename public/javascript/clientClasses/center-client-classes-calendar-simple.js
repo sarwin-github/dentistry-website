@@ -1,17 +1,8 @@
 function getCalendarData(data){
-	var monthNamesShort = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-	var monthNames      = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-	var dateNamesShort  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-	var dateNames       = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 	var classesItems    = data;
 
 	// INITIALIZE FULL CALENDAR
 	$('#calendar').fullCalendar({
-	  // SET DATE TO SPANISH
-	  monthNames: monthNames,
-	  monthNamesShort: monthNamesShort,
-	  dayNames: dateNames,
-	  dayNamesShort: dateNamesShort,
 	  // AVAILABLE HEADER TOOLBAR
 	  header: {
 	    left: 'title',
@@ -20,14 +11,14 @@ function getCalendarData(data){
 	  },
 	  // SET HEADER BUTTON NAMES
 	  views: {
-	    listWeek: { buttonText: 'semanal lista' },
-	    agendaDay: { buttonText: 'día'},
-	    agendaWeek: { buttonText: 'semana'},
-	    month: { buttonText: 'mes'},
+	    listWeek: { buttonText: 'List' },
+	    agendaDay: { buttonText: 'Days'},
+	    agendaWeek: { buttonText: 'Weeks'},
+	    month: { buttonText: 'Months'},
 	  },
 	  // SET HEADER BUTTON NAME
 	  buttonText: {
-	    today: 'hoy'
+	    today: 'Today'
 	  },
 	  // SET INITIAL CALENDAR VIEW
 	  defaultView: 'month',
