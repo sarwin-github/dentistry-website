@@ -1,0 +1,119 @@
+
+<!doctype html>
+<html>
+<head>
+	<title><%= locals.title %> - Contact Us</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Company Web Solutions">
+	<meta name="keywords" content="Company Web Solutions">
+	<link href="/public/css/core.min.css" rel="stylesheet">
+	<link href="/public/css/thesaas.min.css" rel="stylesheet">
+	<link href="/public/css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid bg-gray" style="padding:0px;">
+		<!-- THIS IS THE NAVBAR -->
+		<%- include("../templates/navbar.ejs") %>
+
+		<!-- Header -->
+		<header class="header header-inverse" style="background-image: url(/public/images/contact-us.jpg);">
+			<div class="overlay" style="background-color: #000; position: absolute; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.6;"></div>
+			<div class="container text-center">
+
+				<div class="row">
+					<div class="col-12 col-lg-8 offset-lg-2">
+						<h2 class="text-warning">Contact us or send a mail<!-- Fitness options--> </h2>
+						<br>
+						<p class="fs-20 opacity-70">"Get in touch via contact form or email us directly. We will get back to you as soon as possible".</p>
+					</div>
+				</div>
+
+			</div>
+		</header>
+		<!-- END Header -->
+
+		<div class="container py-40 pb-40">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 text-center card py-40 px-40" >
+				    <div>
+				        <h3><strong>Where To Meet?</strong> </h3>
+				    </div>
+				    <!-- Personal Info -->
+				    <div style="color: #515557;">
+				        <p>Lucena City, Philippines</p>
+				    </div>
+				    
+				    <div><hr>
+				        <h3><strong>Say Hello</strong> </h3>
+				    </div>
+				    <!-- Personal Info -->
+				    <div style="color: #515557;">
+				        <p><strong>Email: </strong> some_email@gmail.com</p>
+				        <p><strong>Phone: </strong>+639-19-589-5787</p>
+				    </div>
+				    
+
+				    <div><hr>
+				        <p><a href='#'>Google Maps <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+				        <img src="/public/images/Google-Maps-icon.png" width="100" />
+				    </div>
+				    <hr>
+				</div>
+				<div class="col-md-8 col-sm-8 card py-40 px-40" >
+				    <form class="form-horizontal" action='/' method='post'>
+				    	<legend class="pl-15"><span class="fa fa-envelope-square"></span> Contact Form</legend>
+				        <fieldset>
+				            <div class="form-group">
+				              <label for="inputSubject" class="col-md-6 control-label">Subject:</label>
+				              <div class="col-md-12">
+				                <input type="text" class="form-control" id="inputSubject" name='subject' placeholder="Subject" required>
+				              </div>
+				            </div>
+				            
+				            <div class="form-group">
+				              <label for="name" class="col-md-6 control-label">Full Name:</label>
+				              <div class="col-md-12">
+				                <input type="text" class="form-control" id="name" name='name' placeholder="From" required>
+				              </div>
+				            </div>
+				            <div class="form-group">
+				              <label for="email" class="col-md-6 control-label">Email:</label>
+				              <div class="col-md-12">
+				                <input type="text" class="form-control" id="email" name='email' placeholder="Email" required>
+				              </div>
+				            </div>
+				            <div class="form-group">
+				              <label for="message" class="col-md-6 control-label">Message:</label>
+				              <div class="col-md-12">
+				                <textarea class="form-control" rows="5" id="message" name='message' required></textarea>
+				              </div>
+				            </div>
+				            <br>
+				            <div class="form-group">
+				              <div class="col-md-12 text-center hidden-sm-down">
+				                <button class="px-50 py-5" type="reset" style="color: #ffffff; background-color: #d82d48; border-color: transparent;">Reset</button>
+				                <button class="px-50 py-5" type="submit" style="color: #ffffff; background-color: #2c3e50; border-color: transparent;">Submit</button>
+				              </div>
+
+				              <div class="col-md-12 text-center hidden-sm-up">
+				                <button class="px-50 py-5 btn-block" type="reset" style="color: #ffffff; background-color: #d82d48; border-color: transparent;">Reset</button>
+				                <button class="px-50 py-5 btn-block" type="submit" style="color: #ffffff; background-color: #2c3e50; border-color: transparent;">Submit</button>
+				              </div>
+				            </div>
+				        </fieldset>
+				    </form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<%- include("../templates/footer.ejs") %>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/public/javascript/core.min.js"></script>
+	<script src="/public/javascript/thesaas.min.js"></script>
+</body>
+</html>
+

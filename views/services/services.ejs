@@ -1,0 +1,135 @@
+
+<!doctype html>
+<html>
+<head>
+    <title><%= locals.title %> - Contact Us</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Company Web Solutions">
+    <meta name="keywords" content="Company Web Solutions">
+    <link href="/public/css/core.min.css" rel="stylesheet">
+    <link href="/public/css/thesaas.min.css" rel="stylesheet">
+    <link href="/public/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid bg-gray" style="padding:0px;">
+        <!-- THIS IS THE NAVBAR -->
+        <%- include("../templates/navbar.ejs") %>
+
+        <!-- Header -->
+        <header class="header header-inverse" style="background-image: url(/public/images/services.jpg);">
+            <div class="overlay" style="background-color: #000; position: absolute; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.6;"></div>
+            <div class="container text-center">
+
+                <div class="row">
+                    <div class="col-12 col-lg-8 offset-lg-2">
+                        <h2 class="text-warning">Dental Services </h2>
+                        <br>
+                        <p class="fs-20 opacity-70">"These are the list of dental services we offer".</p>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!-- END Header -->
+
+        <div class="container py-40 pb-40">
+            <div class="row">
+                <div class="col-md-12 text-center px-5">
+                    <div class="card card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <form>
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Search Services" aria-label="Search Services" aria-describedby="basic-addon2">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-success" type="button">Search</button>
+                                  </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/child-patient.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Cleanings & Prevention</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/restoring-teeth.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Restoring Teeth</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/cosmetic.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Cosmetic Dentistry</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/implant.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Dental Implants</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/root-canal.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Root Canal Therapy</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 px-5 text-center py-10">
+                    <div class="card h-400 card-bordered card-hover-shadow">
+                        <div class="card-block">
+                            <a href="#">
+                                <img src="/public/images/other.jpg" class="img-fluid" style="width: 250px; border: 2px solid #e2e2e2; border-radius: 120px;">
+                                <h4 class="card-title text-dark" style="margin-top: 20px; margin-bottom: 0;">Other Services</h4><hr>
+                                <h5 class="card-title">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet.</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../templates/footer.ejs") %>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/public/javascript/core.min.js"></script>
+    <script src="/public/javascript/thesaas.min.js"></script>
+</body>
+</html>
+

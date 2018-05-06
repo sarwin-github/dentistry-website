@@ -55,9 +55,9 @@
 
 				<div class="row">
 					<div class="col-12 col-lg-8 offset-lg-2">
-						<h2 class="text-warning">Client Appointments <!-- Fitness options--> </h2>
+						<h2 class="text-warning">Appointment Details<!-- Fitness options--> </h2>
 						<br>
-						<p class="fs-20 opacity-70">"List of appointment details".</p>
+						<p class="fs-20 opacity-70">"Check out appointments for this upcoming months or weeks".</p>
 					</div>
 				</div>
 
@@ -67,33 +67,33 @@
 
 		<div class="container-fluid px-md-5 py-40 pb-40">
 			<div class="row px-md-5">
-				<div class="col-md-9 card py-40 px-20">
+				<div class="col-md-9 card py-40 px-20 pl-40">
 					<div id='calendar'></div>
 				</div>
-				<div class="col-md-3 card py-40 px-20">
+				<div class="col-md-3 card py-40 px-20" style="background-color: #e1f5fe;">
 					<h5 class="fs-18  pb-3"><i class="fa fa-calendar"></i> Weekly Appointments Summary</h5>
 					<dl class="pl-md-3">
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">John Marquis Solomon</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">John Marquis Solomon</strong><br>
 							<i class="pl-md-3">Cleaning, Brace Adjustment</i><br>
 							<i class="pl-md-3">12:30pm - 2:00pm</i> - Monday
 						</dd>
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">Michael Angelo Dominguez</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">Michael Angelo Dominguez</strong><br>
 							<i class="pl-md-3">Root Canal</i><br>
 							<i class="pl-md-3">12:30pm - 2:00pm</i> - Tuesday
 						</dd>
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">Diane Del Mundo</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">Diane Del Mundo</strong><br>
 							<i class="pl-md-3">Cleaning, Teeth Restoration</i><br>
 							<i class="pl-md-3">12:30pm - 2:00pm</i> - Tuesday
 						</dd>
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">Faye Marquez</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">Faye Marquez</strong><br>
 							<i class="pl-md-3">Cleaning, Flouride Treatment</i><br>
 							<i class="pl-md-3">3:30pm - 5:00pm</i> - Wednesday
 						</dd>
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">Daniel Martinez</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">Daniel Martinez</strong><br>
 							<i class="pl-md-3">Cleaning, Teeth Restoration</i><br>
 							<i class="pl-md-3">12:30pm - 2:00pm</i> - Thursday
 						</dd>
-						<dd><i class="fa fa-user"></i> <strong class="text-gray-dark">John Marquis Solomon</strong><br>
+						<dd><i class="fa fa-user pr-5"></i> <strong class="text-gray-dark">John Marquis Solomon</strong><br>
 							<i class="pl-md-3">Cleaning, Teeth Restoration</i><br>
 							<i class="pl-md-3">2:10pm - 4:00pm</i> - Friday
 						</dd>
@@ -102,7 +102,7 @@
 					<br>
 
 					<small>Click Book Appointment to book a client to calendar. The client will be notified through their provided email address about their schedule.</small><br>
-					<button class="btn btn-block btn-primary">Book Appointment </button>
+					<button class="btn btn-block btn-primary">Schedule an Appointment </button>
 
 				</div>
 			</div>
@@ -348,6 +348,8 @@
 			getCalendarData(<%- JSON.stringify() %>);
 		});
 	</script>
+	<script src="/public/javascript/core.min.js"></script>
+	<script src="/public/javascript/thesaas.min.js"></script>
 	<script src='/public/javascript/fullcalendar/lib/moment.min.js'></script>
 	<script src='/public/javascript/fullcalendar/fullcalendar.js'></script>
 	<script src="/js/build/jquery.datetimepicker.full.min.js"></script>
