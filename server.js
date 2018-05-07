@@ -18,12 +18,12 @@ const favicon        = require('serve-favicon');
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Set database connection
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-const env            = process.env.NODE_EN || 'local';
+const env            = process.env.NODE_EN || 'dev';
 const databaseConfig = require('./config/mongo-db-context');
 const initializeEnv  = require('./config/initialize-env-variables');
 
 databaseConfig.pickEnv(env, app);
-initializeEnv.pickEnv(env, app);
+initializeEnv.pickEnv(app);
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Set view engine and session

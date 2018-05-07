@@ -9,7 +9,7 @@ let mongoConnectionLocal = {
 
 // Development database from mongolab
 let mongoConnectionOnline = {
-	'url': `mongodb://${process.env.MLabDBUser}:${process.env.MLabDBPassword}@ds113749.mlab.com:13749/dentistry-app`
+	'url': `mongodb://${process.env.MLabDBUser}:${process.env.MLabDBPassword}@ds117250.mlab.com:17250/dentistry-app`
 };
 
 
