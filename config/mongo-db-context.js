@@ -4,7 +4,7 @@ const mongoStore = require('connect-mongo')(session);
 
 // Local connection
 let mongoConnectionLocal = {	
-	'url': `mongodb://${process.env.MongoDBLocalUser}:${process.env.MongoDBLocalPassword}@127.0.0.1:27017/dentistry-app`
+	'url': `mongodb://127.0.0.1:27017/dentistry-app`
 };
 
 // Development database from mongolab
@@ -17,6 +17,12 @@ let mongoConnectionOnline = {
 // Session storage and database configuration 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 module.exports.pickEnv = (env, app) => {
+	var options = {
+	  auth: {authdb: 'admin'},
+	  user: process.env.MongoDBLocalUser,
+	  pass: process.env.MongoDBLocalPassword,
+	}
+
 	mongoose.Promise = global.Promise;
 	switch (env) {
 	    case 'dev':
@@ -26,7 +32,7 @@ module.exports.pickEnv = (env, app) => {
 	        break;
 		case 'local':
 	    	app.set('port', process.env.PORT || 9001);
-	        mongoose.connect(mongoConnectionLocal.url, {auth:{authdb:"admin"}},  
+	        mongoose.connect(mongoConnectionLocal.url, options,  
 	        	err => { if(err) { console.log(err); }});
 			break;
 	};

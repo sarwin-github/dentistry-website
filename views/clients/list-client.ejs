@@ -1,0 +1,84 @@
+ 
+<!doctype html>
+<html>
+<head>
+  <title>Create Client</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Company Web Solutions">
+  <meta name="keywords" content="Company Web Solutions">
+  <link href="/public/css/core.min.css" rel="stylesheet">
+  <link href="/public/css/thesaas.min.css" rel="stylesheet">
+  <link href="/public/css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container-fluid bg-gray" style="padding:0px;">
+    <!-- THIS IS THE NAVBAR -->
+    <%- include("../templates/navbar.ejs") %>
+
+    <!-- Header -->
+    <header class="header header-inverse" style="background-image: url(/public/images/child-patient.jpg);">
+      <div class="overlay" style="background-color: #000; position: absolute; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.7;"></div>
+      <div class="container text-center">
+
+        <div class="row">
+          <div class="col-12 col-lg-8 offset-lg-2">
+            <h2 class="text-warning">Our Loyal Clients <!-- Fitness options--> </h2>
+            <br>
+            <p class="fs-20 opacity-70">"List of patients and details".</p>
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <!-- END Header -->
+
+    <div class="container py-40">
+      	<div class="row">
+           	<div class="col-md-12 card py-40 px-40">
+             	<div class="table-responsive">
+                <table class="table table-condensed table-striped">
+                  <thead class="bg-danger">
+                    <tr>
+                      <th></th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Birthday</th>
+                      <th>Address</th>
+                      <th>Phone</th>
+                      <th class="text-right"><a href="/clients/create" class="btn btn-sm btn-default text-primary">Add New Patient</a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% clients.forEach(function(client, index){%>
+                      <tr>
+                        <td><strong><%= index + 1 %>.</strong></td>
+                        <td class="w-200"><a href="/" class="fw-600"><%= client.name %></a></td>
+                        <td><%= client.email %></td>
+                        <td><%= client.birthday.toLocaleDateString(); %> <br>| <%= client.age %></td>
+                        <td class="w-150"><%= client.address %></td>
+                        <td class="w-150"><%= client.phone %></td>
+                        <td class="text-right">
+                          <a href="/clients/remove/<%= client._id %>" class="text-uppercase fs-12 fw-600">
+                            <span class="fa fa-times"></span> Remove
+                          </a>
+                          | 
+                          <a href="/clients/edit/<%= client._id %>" class="text-uppercase fs-12 fw-600">
+                            <span class="fa fa-edit"></span> Edit
+                          </a>
+                        </td>
+                      </tr>
+                    <%})%>
+                  </tbody>
+                </table>
+              </div>
+           	</div>
+        </div>
+      </div>
+    </div>
+    <%- include("../templates/footer.ejs") %>
+    <script src="/public/javascript/core.min.js"></script>
+    <script src="/public/javascript/thesaas.min.js"></script>
+  </body>
+</html>
+
