@@ -1,8 +1,10 @@
-const mongoose                       = require('mongoose');
-const Client                         = require('../model/clients');
-const csrf                           = require('csurf');
-const async                          = require('async');
-const csrfProtection                 = csrf();
+const mongoose         = require('mongoose');
+const AppointmentModel = require('../../appointments/model/appointments');
+const Client           = require('../model/clients');
+const Appointment      = mongoose.model('Appointments');
+const csrf             = require('csurf');
+const async            = require('async');
+const csrfProtection   = csrf();
 
 module.exports.getCreateClient = (req, res) => {
 	res.render('clients/create-client.ejs', {
@@ -26,7 +28,7 @@ module.exports.postCreateClient = (req, res) => {
 		    return res.status(500).json({success: false, message: 'Something went wrong.'});
 		}
 		req.flash('message', 'Successfully added a new patient.');
-		res.redirect('/clients/list');
+		res.redirect('/patients/list');
 	});
 };
 
@@ -83,6 +85,7 @@ module.exports.getEditClient = (req, res) => {
 	});
 };
 
+// update a client
 module.exports.putEditClient = (req, res) => {
 	async.waterfall([
 		// find client by id
@@ -121,6 +124,56 @@ module.exports.putEditClient = (req, res) => {
 		    	});
 		    }
 		    req.flash('message', 'Successfully updated patient details');
-		    res.redirect('/clients/list');
+		    res.redirect('/patients/list');
+	});
+};
+
+// delete a client
+module.exports.deleteClient = (req, res) => {
+	async.waterfall([
+		//Check if the trainer already exist to list of registered trainers
+	    (callback) => {
+	      	let query = Client.findOneAndRemove({ _id: req.params.id })
+	      				.select({'__v':0});
+
+	      	query.exec((err, client) => {
+	      		if(!client){
+	      			return res.render('error/error.ejs', { 
+	      				success: false, 
+	      				error: "Error Deleting Patient", 
+	      				message: "The patient you are looking for does not exist." 
+	      			});
+	      		}
+	      		callback(err, client);
+	      	});
+	    }, (client, callback) => {
+	    	async.parallel({
+	    		// get client appointment
+    		    appointment: (done) => {
+    		    	let query = Appointment.findOneAndRemove({ 'bookedClients.bookedClient': client._id })
+
+    		    	return query.exec((err, result) => {
+    		    		return done(err, result);
+    		    	});
+    		    },
+    		}, (err, data) => {
+    		    if(err){
+    		        return res.render('error/error.ejs', { success: false, error: err, message: "Something went wrong." });
+    		    } if(!data){
+    	            return res.render('error/error.ejs', { success: false, error: '404: Data not found.', 
+    	                message: "The data you are looking for does not exist." });
+    	        }
+
+    		    callback(err, data);
+    		});	
+	    }], 
+	    //Execute all callbacks
+	    (err, results) => {
+		    if(!!err) {
+		    	return res.render('error/error.ejs', { success: false, error: err, message: "Something went wrong." });
+		    }
+		    
+	    req.flash('message', 'The patient has been successfully removed.');
+	    res.redirect("/patients/list"); 	 
 	});
 };

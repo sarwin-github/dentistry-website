@@ -7,15 +7,18 @@ const clientController = require('../controller/client-controller');
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
-// create new client
+// create new patient
 router.route('/create').get(clientController.getCreateClient)
 					   .post(clientController.postCreateClient);
 
-// list clients
+// list patient
 router.route('/list').get(clientController.listClients);
 
-//edit
+//edit patient
 router.route('/edit/:id').get(clientController.getEditClient)
-					   .put(clientController.putEditClient)
+					   .put(clientController.putEditClient);
+
+//delete patient
+router.route('/remove/:id').delete(clientController.deleteClient);
 
 module.exports = router;

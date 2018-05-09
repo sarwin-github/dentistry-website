@@ -15,6 +15,6 @@ module.exports.initializeRoutes = app => {
 	app.use('/', HomeRoutes);
 	app.use('/contact-us', ContactUsRoutes);
 	app.use('/services', ServicesRoutes);
-	app.use('/clients', ClientRoutes);
+	app.use('/patients', ClientRoutes);
 	app.use('/appointments', AppointmentRoutes);
 };

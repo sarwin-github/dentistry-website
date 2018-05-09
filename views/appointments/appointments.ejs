@@ -36,11 +36,6 @@
 	    background-color: #02b2e2;
 	  }
 
-	  @media (min-width: 720px) {
-	    .modal-dialog {
-	      max-width: 65%;
-	    }
-	  }
 	</style>
 </head>
 <body>
@@ -71,35 +66,70 @@
 					<h3 class="text-primary">Appointment Calendar</h3>
 
 					<div id='calendar'></div>
+
+					<div id="fullCalModalDescription" class="modal fade">
+					  <div class="modal-dialog">
+					    <div class="modal-content">
+					      <div class="modal-header pb-2" style="background-color: #02b2e2">
+					        <h6 class="text-white">Appointment Details</h6>
+					        <button type="button" class="close text-white" style="cursor: pointer;" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">Close</span></button>
+					      </div>
+					      <div class="modal-body">
+					        <div>
+					          <h4> <span id="eventTitle" class="modal-title"></span> </h4>
+					        </div> | <strong>ID: </strong><span id="eventID"></span><hr>
+					        <p>
+					          <strong>Schedule: </strong> 
+					          <span id="eventStart" class="fw-500"></span> to <span id="eventEnd" class="fw-500"></span>
+					        </p>
+					        <p>
+					          <strong>Patient: </strong> 
+					          <a href="" id="eventDetails" class="fw-600"><span id="eventPatient"></span></a>
+					        </p>
+					        <p id="eventDescription"></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-sm" style="cursor: pointer;" data-dismiss="modal"><span aria-hidden="true">Close</span></button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</div>
+
+
 				<header class="col-md-3 card py-20 pl-20 header header-inverse site-footer" style="border-left: solid 2px #00bcd4; background-image: url(public/images/contact-us.jpg); color: whitesmoke !important;">
 					<div class="overlay" style="background-color: #000; position: absolute; height: 100%; top: 0; right: 0; bottom: 0; left: 0; opacity: 0.75;"></div>
 					
 					<div class="container">
-						<h5 class="fs-20"><i class="fa fa-calendar"></i> Daily Appointments Summary | <a href="/clients/list" class="text-danger fs-16">View Patient Lists</a></h5>
+						<h5 class="fs-20"><i class="fa fa-calendar"></i> Daily Appointments Summary | <a href="/patients/list" class="text-danger fs-16">View Patient Lists</a></h5>
 						<dl><hr>
-							<dd><i class="fa fa-user"></i> <strong class="lead pl-1">Diane Del Mundo</strong><br>
-								<span class="pl-md-3">Cleaning, Teeth Restoration</span><br>
-								<span class="pl-md-3">10:30am - 11:30am</span> : Monday<hr>
-							</dd>
-							<dd><i class="fa fa-user"></i> <strong class="lead pl-1">John Marquis Solomon</strong><br>
-								<span class="pl-md-3">Cleaning, Brace Adjustment</span><br>
-								<span class="pl-md-3">12:30pm - 2:00pm</span> : Monday<hr>
-							</dd>
-							<dd><i class="fa fa-user"></i> <strong class="lead pl-1">Michael Angelo Dominguez</strong><br>
-								<span class="pl-md-3">Root Canal</span><br>
-								<span class="pl-md-3">2:30pm - 4:00pm</span> : Monday<hr>
-							</dd>
-							
-							<dd><i class="fa fa-user"></i> <strong class="lead pl-1">Faye Marquez</strong><br>
-								<span class="pl-md-3">Cleaning, Flouride Treatment</span><br>
-								<span class="pl-md-3">4:00pm - 5:30pm</span> : Monday<hr>
-							</dd>
+							<% appointments.forEach(function(appointment){%>
+								<% if(appointment.bookedClients.bookedClient){ 
+										var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+										var today = new Date();
+										var startAppointment = new Date(appointment.start);
+										var endAppointment = new Date(appointment.end);
+									%>
+
+									<% if(startAppointment.getDay() == today.getDay() && startAppointment.getDate() == today.getDate()){ %>
+										<dd><i class="fa fa-user"></i> <strong class="lead pl-1">
+											<% 
+												var start = appointment.start.split(' '); 
+												var end = appointment.end.split(' ');
+											%>
+
+											<%= appointment.bookedClients.bookedClient.name %></strong><br>
+											<span class="pl-md-3"><%= appointment.title %></span><br>
+											<span class="pl-md-3"><%= start[1] + ' ' + start[2] %> - <%= end[1] + ' ' + end[2]  %></span> : <%= week[startAppointment.getDay()] %><hr>
+										</dd>
+									<%}%>
+								<%}%>
+							<%})%>
 						</dl>
 
 						<small>Click Book Appointment to book a client to calendar. The client will be notified through their provided email address about their schedule.</small>
 						<br><br>
-						<button class="btn btn-block btn-primary">Schedule an Appointment </button>
+						<a href="/appointments/create" class="btn btn-block btn-primary">Schedule an Appointment </a>
 					</div>
 				</header>
 
@@ -111,240 +141,15 @@
 	<%- include("../templates/footer.ejs") %>
 	<script src="/js/jquery.js"></script>
 	<script src="/js/jquery.min.js"></script>
-	<!--
-	<script src="/public/javascript/core.min.js"></script>
-	<script src="/public/javascript/thesaas.min.js"></script>-->
-	<script src="/public/javascript/clientClasses/center-client-classes-calendar-simple.js"></script>
+	<script src="/public/javascript/clientClasses/appointment-calendar.js"></script>
+	<% var appointmentData = [];
+	   appointments.forEach(function(appointment){
+	     appointmentData.push(appointment);
+	   });
+	 %>
 	<script>
-		var dataSource = [{
-			"_id": "5aee8e54f51c58aecf967d7b",
-			"index": 0,
-			"guid": "9983fb93-225a-44c4-ba1a-cbddb24aa870",
-			"isActive": false,
-			"balance": "$2,469.84",
-			"picture": "http://placehold.it/32x32",
-			"age": 39,
-			"eyeColor": "green",
-			"name": "Carney England",
-			"gender": "male",
-			"company": "DOGSPA",
-			"email": "carneyengland@dogspa.com",
-			"phone": "+1 (927) 401-3999",
-			"address": "898 Provost Street, Hemlock, Iowa, 2455",
-			"about": "Eiusmod cillum qui et consectetur mollit aliquip. Pariatur officia laborum ex anim ea commodo. Sunt est tempor consectetur ipsum ut aliquip voluptate duis ut adipisicing commodo anim. Id quis consequat fugiat veniam pariatur est consequat aliquip labore. Reprehenderit ad ad et aliquip ut tempor anim amet non nulla nulla excepteur id.\r\n",
-			"registered": "2014-11-26T06:09:25 -08:00",
-			"latitude": 71.721935,
-			"longitude": -91.56621,
-			"tags": [
-			"pariatur",
-			"consequat",
-			"aute",
-			"nisi",
-			"labore",
-			"incididunt",
-			"incididunt"
-			],
-			"friends": [
-			{
-				"id": 0,
-				"name": "Sexton Watkins"
-			},
-			{
-				"id": 1,
-				"name": "Solis Davidson"
-			},
-			{
-				"id": 2,
-				"name": "Raymond Payne"
-			}
-			],
-			"greeting": "Hello, Carney England! You have 8 unread messages.",
-			"favoriteFruit": "banana"
-		},
-		{
-			"_id": "5aee8e546034883195033785",
-			"index": 1,
-			"guid": "2336f3c3-ffe2-4d29-b81e-c528dbd1413d",
-			"isActive": false,
-			"balance": "$2,569.52",
-			"picture": "http://placehold.it/32x32",
-			"age": 39,
-			"eyeColor": "green",
-			"name": "Finley Powell",
-			"gender": "male",
-			"company": "COMVERGES",
-			"email": "finleypowell@comverges.com",
-			"phone": "+1 (827) 536-2429",
-			"address": "120 Holt Court, Alamo, Marshall Islands, 1847",
-			"about": "Ut eu laborum ea irure Lorem eu nulla elit est dolor quis nulla. Proident nostrud cupidatat ut anim reprehenderit dolore ut anim. Culpa enim qui laboris nostrud mollit magna sunt elit ut velit pariatur quis id. Cupidatat eiusmod veniam excepteur mollit id ex proident proident sit aliquip aute est Lorem nostrud. Duis labore velit Lorem excepteur Lorem deserunt consectetur.\r\n",
-			"registered": "2014-11-26T10:17:28 -08:00",
-			"latitude": 75.305908,
-			"longitude": 23.271024,
-			"tags": [
-			"eiusmod",
-			"sit",
-			"duis",
-			"do",
-			"ea",
-			"sit",
-			"eiusmod"
-			],
-			"friends": [
-			{
-				"id": 0,
-				"name": "Violet Cunningham"
-			},
-			{
-				"id": 1,
-				"name": "Rodriguez Cabrera"
-			},
-			{
-				"id": 2,
-				"name": "Steele Pate"
-			}
-			],
-			"greeting": "Hello, Finley Powell! You have 9 unread messages.",
-			"favoriteFruit": "banana"
-		},
-		{
-			"_id": "5aee8e54d1b43a4df4246591",
-			"index": 2,
-			"guid": "1aeed276-298f-423d-a01e-b33caf503d53",
-			"isActive": true,
-			"balance": "$1,933.50",
-			"picture": "http://placehold.it/32x32",
-			"age": 40,
-			"eyeColor": "blue",
-			"name": "Vazquez Baldwin",
-			"gender": "male",
-			"company": "CYTREX",
-			"email": "vazquezbaldwin@cytrex.com",
-			"phone": "+1 (840) 473-2873",
-			"address": "605 Stratford Road, Deputy, Oregon, 428",
-			"about": "Est laboris laborum eu tempor Lorem deserunt exercitation cillum culpa aute. Sint nulla quis nulla velit reprehenderit. Voluptate consequat fugiat quis officia.\r\n",
-			"registered": "2016-01-31T10:53:11 -08:00",
-			"latitude": -56.102898,
-			"longitude": -153.9341,
-			"tags": [
-			"incididunt",
-			"est",
-			"eu",
-			"ut",
-			"quis",
-			"aliquip",
-			"velit"
-			],
-			"friends": [
-			{
-				"id": 0,
-				"name": "Spence Franks"
-			},
-			{
-				"id": 1,
-				"name": "Williamson Patton"
-			},
-			{
-				"id": 2,
-				"name": "Elvira Bryan"
-			}
-			],
-			"greeting": "Hello, Vazquez Baldwin! You have 8 unread messages.",
-			"favoriteFruit": "banana"
-		},
-		{
-			"_id": "5aee8e54613cbcc2c6c727f2",
-			"index": 3,
-			"guid": "eee31960-3bdb-430e-a5f1-952bda96cce9",
-			"isActive": true,
-			"balance": "$1,481.11",
-			"picture": "http://placehold.it/32x32",
-			"age": 34,
-			"eyeColor": "brown",
-			"name": "Shana Dale",
-			"gender": "female",
-			"company": "KIGGLE",
-			"email": "shanadale@kiggle.com",
-			"phone": "+1 (986) 495-3131",
-			"address": "531 Boerum Place, Naomi, Guam, 7813",
-			"about": "Velit cupidatat consectetur aute ad velit ad deserunt adipisicing duis officia. Velit pariatur cillum nulla laborum sunt culpa excepteur ex elit nisi dolore sit. Anim elit laboris labore dolore aute laborum fugiat. Sint do cillum eu irure eiusmod consequat aliquip irure proident labore sunt adipisicing. Consectetur voluptate nulla do adipisicing.\r\n",
-			"registered": "2014-07-20T12:52:12 -08:00",
-			"latitude": -26.076378,
-			"longitude": 13.659318,
-			"tags": [
-			"culpa",
-			"pariatur",
-			"eiusmod",
-			"proident",
-			"commodo",
-			"excepteur",
-			"nostrud"
-			],
-			"friends": [
-			{
-				"id": 0,
-				"name": "Noble Castillo"
-			},
-			{
-				"id": 1,
-				"name": "Dorothy Hansen"
-			},
-			{
-				"id": 2,
-				"name": "Serena Howe"
-			}
-			],
-			"greeting": "Hello, Shana Dale! You have 2 unread messages.",
-			"favoriteFruit": "banana"
-		},
-		{
-			"_id": "5aee8e5471040e4237fa7412",
-			"index": 4,
-			"guid": "1de38bb2-67df-4e67-84ef-9ff72d134809",
-			"isActive": true,
-			"balance": "$2,663.56",
-			"picture": "http://placehold.it/32x32",
-			"age": 36,
-			"eyeColor": "green",
-			"name": "Mckay Hood",
-			"gender": "male",
-			"company": "GENMOM",
-			"email": "mckayhood@genmom.com",
-			"phone": "+1 (950) 479-2064",
-			"address": "332 Powell Street, Munjor, South Carolina, 1130",
-			"about": "Ut elit ipsum Lorem occaecat in fugiat Lorem. Labore culpa eu sit do eiusmod culpa ut nisi minim et qui. Ea sit ipsum labore cupidatat ipsum incididunt duis. Ut incididunt culpa ipsum labore aliqua do ea exercitation.\r\n",
-			"registered": "2018-04-05T07:40:15 -08:00",
-			"latitude": 44.452739,
-			"longitude": 17.182776,
-			"tags": [
-			"reprehenderit",
-			"Lorem",
-			"veniam",
-			"esse",
-			"velit",
-			"laboris",
-			"sint"
-			],
-			"friends": [
-			{
-				"id": 0,
-				"name": "Sloan Mays"
-			},
-			{
-				"id": 1,
-				"name": "Marshall Wilkinson"
-			},
-			{
-				"id": 2,
-				"name": "Reeves Horne"
-			}
-			],
-			"greeting": "Hello, Mckay Hood! You have 1 unread messages.",
-			"favoriteFruit": "banana"
-		}
-		]
-
 		$(document).ready(function(dataSource) {
-			getCalendarData(<%- JSON.stringify() %>);
+			getCalendarData(<%- JSON.stringify(appointmentData) %>);
 		});
 	</script>
 	<script src="/public/javascript/core.min.js"></script>

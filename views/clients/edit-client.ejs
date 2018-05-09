@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Create Client</title>
+  <title><%= locals.title %> - Update Patient Details</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Company Web Solutions">
@@ -27,9 +27,9 @@
 
         <div class="row">
           <div class="col-12 col-lg-8 offset-lg-2">
-            <h2 class="text-warning">Our Loyal Clients <!-- Fitness options--> </h2>
+            <h2 class="text-warning">Patients Details <!-- Fitness options--> </h2>
             <br>
-            <p class="fs-20 opacity-70">"List of patients and details".</p>
+            <p class="fs-20 opacity-70">"Edit patient details for appointments".</p>
           </div>
         </div>
 
@@ -41,9 +41,9 @@
       	<div class="row">
            	<div class="col-md-12 card py-40 px-40">
              	<div>
-             		<h3>Edit Patient Details <span class="pull-right" style="font-size: 15px;"><a href="/clients/list">Back to list</a></span></h3><hr>
-                <div class="col-md-8 offset-2">
-                  <form action="/clients/edit/<%= client._id %>?_method=PUT" method="post">
+             		<h3>Edit Patient Details <span class="pull-right" style="font-size: 15px;"><a href="/patients/list">View all patients</a></span></h3><hr>
+                <div class="col-md-8">
+                  <form action="/patients/edit/<%= client._id %>?_method=PUT" method="post">
                     <div class="form-group">
                       <label>Name</label>
                       <input class="form-control" type="text" name="name" value="<%= client.name %>" required>
@@ -58,14 +58,14 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Birthday</label>
-                          <input class="form-control" type="date" name="birthday" required>
+                          <input class="form-control" type="date" name="birthday" id="birthday" required>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Age</label>
-                          <input class="form-control" type="number" name="age" value="<%= client.age %>" required>
+                          <input class="form-control" type="number" name="age" id="age" value="<%= client.age %>" required>
                         </div>
                       </div>
                     </div>
@@ -93,6 +93,25 @@
       </div>
     </div>
     <%- include ../templates/footer.ejs %>
+    <script type="text/javascript">
+      function getDateValue(dateString){
+        var date  = new Date(dateString);
+        var day   = date.getDate();
+        var month = date.getMonth() + 1;
+        var year  = date.getFullYear();
+
+        var currentDate = new Date();
+        var currentYear = currentDate.getFullYear();
+
+        var age = currentYear - year;
+
+        return (age);
+      }
+
+      $('#birthday').change(function(){
+        $('#age').val(getDateValue($('#birthday').val()));
+      });
+    </script>
     <script src="/public/javascript/core.min.js"></script>
     <script src="/public/javascript/thesaas.min.js"></script>
   </body>
