@@ -36,10 +36,6 @@
   "devDependencies": {
     "nodemon": "^1.12.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sarwin-github/company-web-solutions"
-  },
   "engines": {
     "node": "6.10.2"
   }
